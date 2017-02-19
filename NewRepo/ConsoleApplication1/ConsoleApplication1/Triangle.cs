@@ -69,6 +69,10 @@ namespace ConsoleApplication1
             }
             else return false;
         }
+        public void VerificationPoints()
+        {
+
+        }
 
 
 
