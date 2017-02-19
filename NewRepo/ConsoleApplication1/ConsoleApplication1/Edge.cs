@@ -8,20 +8,19 @@ namespace ConsoleApplication1
 {
     class Edge
     {
-        public Point pointA;
+        public Point pointA; 
         public Point pointB;
         
-
         public Edge(Point pointA, Point pointB)
         {
-            this.pointA.coordinateX = pointA.coordinateX;
-            this.pointA.coordinateY = pointA.coordinateY;
-            this.pointB.coordinateX = pointB.coordinateX;
-            this.pointB.coordinateY = pointB.coordinateY;
-            
+            this.pointA = pointA; 
+            this.pointB = pointB;
+
         }
-        
-        public double lenght = Math.Sqrt(Math.Pow(pointA.coordinateX - pointB.coordinateX, 2));
+        public double Lenght()
+        {
+            return Math.Sqrt(Math.Pow(pointB.coordinateX - pointA.coordinateX, 2) + Math.Pow(pointB.coordinateY - pointA.coordinateY, 2));
+        }
 
 
     }

@@ -8,7 +8,7 @@ namespace ConsoleApplication1
 {
     class Point
     {
-        public double coordinateX;
+        public double coordinateX;//тип поменять не обязательно
         public double coordinateY;
 
         public Point(double coordinateX, double coordinateY)
@@ -18,7 +18,7 @@ namespace ConsoleApplication1
         }
         public void PrintCoordinate()
         {
-            Console.WriteLine("Координата Х = {0}, координата Y = {1}", coordinateX, coordinateY);
+            Console.WriteLine("Координата Х = {0}, координата Y = {1}", coordinateX, coordinateY); //удалить потом в финальной версии
         }
     }
 }

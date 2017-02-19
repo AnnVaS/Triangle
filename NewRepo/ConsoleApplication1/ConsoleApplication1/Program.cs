@@ -12,16 +12,18 @@ namespace ConsoleApplication1
         {
             
             Random Gen = new Random();
-
+            Edge[] edges = new Edge[3];
             Point[] points = new Point[3];
+
             for (int i = 0; i < 3; i++)
             {
                 points[i] = new Point(Gen.Next(-5, 5), Gen.Next(-5, 5));
                 points[i].PrintCoordinate();
+                
             }
-
             
-
+            
+            
             Console.ReadLine();
 
         }
