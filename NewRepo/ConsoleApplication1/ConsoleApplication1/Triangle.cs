@@ -69,13 +69,26 @@ namespace ConsoleApplication1
             }
             else return false;
         }
-        public void VerificationPoints()
+        public bool VerificationPoints()
         {
-
+            for (int i = 0; i < points.Length; i++)
+            {
+                if (i < points.Length - 1)
+                {
+                    if (points[i].coordinateX == points[i + 1].coordinateX && points[i].coordinateY == points[i + 1].coordinateY)
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    if (points[i].coordinateX == points[0].coordinateX && points[i].coordinateY == points[0].coordinateY)
+                    {
+                        return true;
+                    }
+                }                
+            }
+            return false;
         }
-
-
-
-
     }
 }
