@@ -8,18 +8,20 @@ namespace ConsoleApplication1
 {
     class Triangle
     {
+        double perimeter;
+        double area;
         public Point[] points = new Point[3];
                 
-        public Triangle(Point[] points)
+        public Triangle(Point[] points) //конструктор
         {
-            this.points = new Point[points.Length];
+            //this.points = new Point[points.Length];
             for (int i = 0; i < points.Length; i++)
             {
                 this.points[i] = points[i];
             }
         }
-
-        public double Perimeter(Edge[] edges, double perimeter)
+        //находит периметр:
+        public double Perimeter(Edge[] edges) //убрала perimeter
         {
             for (int i = 0; i < edges.Length; i++)
             {
@@ -29,8 +31,8 @@ namespace ConsoleApplication1
             }
             return perimeter;
         }
-
-        public double Area(Edge[] edges, double perimeter, double area)
+        //находит площадь:
+        public double Area(Edge[] edges) //убрала "double perimeter, double area"
         {
             //area = корень(p*(p-a)*(p-b)*(p-c))
             double polPerimeter = perimeter / 2;
@@ -38,7 +40,7 @@ namespace ConsoleApplication1
             double proiztimes=1;          //произведение временных переменных
             for (int i = 0; i < edges.Length; i++)
             {
-                time = polPerimeter - edges[i].Lenght();//функция
+                time = polPerimeter - edges[i].Lenght(); // часть функции, а именно (p-a)*(p-b)*(p-c)
                 proiztimes *= time;
 
             }
@@ -47,7 +49,7 @@ namespace ConsoleApplication1
         }
         public bool Right(Edge[] edges)
         {
-            if (edges[0].Lenght() == Math.Sqrt(Math.Pow(edges[1].Lenght(), 2) + Math.Pow(edges[2].Lenght(), 2)))
+            /*if (edges[0].Lenght() == Math.Sqrt(Math.Pow(edges[1].Lenght(), 2) + Math.Pow(edges[2].Lenght(), 2)))
             {
                 return true;
             }
@@ -59,9 +61,37 @@ namespace ConsoleApplication1
             {
                 return true;
             }
-            else return false;
-        }
-        public bool Isosceles(Edge[] edges)
+            else return false;*///версия 1.0
+            int i = 0;
+                                                
+            if (edges[i].Lenght() > edges[i+1].Lenght())
+            {
+                if (edges[i].Lenght() > edges[i + 2].Lenght())
+                {
+                    if (Math.Pow(edges[i].Lenght(), 2)==(Math.Pow(edges[i+1].Lenght(), 2)+(Math.Pow(edges[i+2].Lenght(), 2))))
+                    {
+                        return true;
+                    }
+                }
+                else if (Math.Pow(edges[i + 2].Lenght(),2)==(Math.Pow(edges[i + 1].Lenght(), 2) + (Math.Pow(edges[i + 2].Lenght(), 2))))
+                {
+                    return true;
+                }
+            }
+            else if (edges[i+1].Lenght() > edges[i + 2].Lenght())
+            {
+                if (Math.Pow(edges[i+1].Lenght(), 2) == (Math.Pow(edges[i].Lenght(), 2) + (Math.Pow(edges[i + 2].Lenght(), 2))))
+                {
+                    return true;
+                }
+                else if (Math.Pow(edges[i+2].Lenght(), 2) == (Math.Pow(edges[i + 1].Lenght(), 2) + (Math.Pow(edges[i].Lenght(), 2))))
+                {
+                    return true;
+                }
+            }
+            return false;
+        } //проверяет, является ли треугольник правильным
+        public bool Isosceles(Edge[] edges) //проверяет, является ои треугольник равнобедренным
         {
             if (edges[0] == edges[1] || edges[1] == edges[2] || edges[2] == edges[0])
             {
@@ -69,7 +99,7 @@ namespace ConsoleApplication1
             }
             else return false;
         }
-        public bool VerificationPoints()
+        public bool VerificationPoints() //проверяет, не совпадают ли точки в треугольнике
         {
             for (int i = 0; i < points.Length; i++)
             {
@@ -90,5 +120,6 @@ namespace ConsoleApplication1
             }
             return false;
         }
+
     }
 }
