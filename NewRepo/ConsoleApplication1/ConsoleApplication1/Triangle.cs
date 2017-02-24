@@ -120,6 +120,14 @@ namespace ConsoleApplication1
             }
             return false;
         }
-
+        public bool Points()//проверяет, лежат ли точки на одной прямой или нет
+        {
+            if ((points[2].coordinateX-points[0].coordinateX)/(points[1].coordinateX - points[0].coordinateX)==
+                (points[2].coordinateY-points[0].coordinateY)/(points[1].coordinateY - points[0].coordinateY))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

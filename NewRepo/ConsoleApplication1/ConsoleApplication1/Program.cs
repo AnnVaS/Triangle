@@ -10,49 +10,60 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            Console.Write("Введите количество треугольников ");
-            int countTriangle = Convert.ToInt32(Console.ReadLine());
-
-            
             Edge[] edges = new Edge[3];
             Point[] points = new Point[3];
-            Triangle[] triangles = new Triangle[countTriangle];
 
             double perimeter = 0;
-            double area = 0;            
-            double averagePerimeter=0;
-            double averageArea=0;
+            double area = 0;
+            double averagePerimeter = 0;
+            double averageArea = 0;
             int countRight = 0;
             int countIsosceles = 0;
 
-            for (int i = 0; i < triangles.Length; i++)
-            {
-                RandomCoordinatesPoints(points, triangles, i);
-                EdgesLenght(edges, points);
+            Console.Write("Введите количество точек, по которым требуется найти данные фигуры, более 2х ");
+            int figure = Convert.ToInt32(Console.ReadLine());
 
-                if (triangles[i].Right(edges) == true)
+            if (figure == 3)
+            {
+                Console.Write("Введите количество треугольников ");
+                int countTriangle = Convert.ToInt32(Console.ReadLine());
+
+                Triangle[] triangles = new Triangle[countTriangle];
+
+                for (int i = 0; i < triangles.Length; i++)
                 {
-                    Console.WriteLine("Прямоугольный");                    
-                    countRight++;
-                    perimeter = triangles[i].Perimeter(edges);//убрала perimeter
-                    Console.WriteLine("Периметер " + perimeter);
-                    averagePerimeter += perimeter;
+                    RandomCoordinatesPoints(points, triangles, i);
+                    EdgesLenght(edges, points);
+
+                    if (triangles[i].Right(edges) == true)
+                    {
+                        Console.WriteLine("Прямоугольный");
+                        countRight++;
+                        perimeter = triangles[i].Perimeter(edges);//убрала perimeter
+                        Console.WriteLine("Периметер " + perimeter);
+                        averagePerimeter += perimeter;
+                    }
+                    if (triangles[i].Isosceles(edges) == true)
+                    {
+                        Console.WriteLine("Равнобедренный");
+                        countIsosceles++;
+                        perimeter = triangles[i].Perimeter(edges); //убрала perimeter
+                        area = triangles[i].Area(edges); //убрала "double perimeter, double area"
+                        Console.WriteLine("Площадь " + area);
+                        averageArea += area;
+                    }
+                    Console.WriteLine();
                 }
-                if (triangles[i].Isosceles(edges) == true)
-                {
-                    Console.WriteLine("Равнобедренный");                    
-                    countIsosceles++;
-                    perimeter = triangles[i].Perimeter(edges); //убрала perimeter
-                    area = triangles[i].Area(edges); //убрала "double perimeter, double area"
-                    Console.WriteLine("Площадь " + area);
-                    averageArea += area;
-                }
-                Console.WriteLine();
+                averagePerimeter = averagePerimeter / countRight;
+                averageArea = averageArea / countIsosceles;
+                Console.WriteLine("Количество прямоуголных = {0}, их среднее = {1}", countRight, averagePerimeter);
+                Console.WriteLine("Количество равнобедренных = {0}, их среднее = {1}", countIsosceles, averageArea);
             }
-            averagePerimeter = averagePerimeter / countRight;
-            averageArea = averageArea / countIsosceles;
-            Console.WriteLine("Количество прямоуголных = {0}, их среднее = {1}", countRight, averagePerimeter);
-            Console.WriteLine("Количество равнобедренных = {0}, их среднее = {1}", countIsosceles, averageArea);
+            else
+            {
+                Polygon[] polygons = new Polygon[figure];
+            }
+               
 
             Console.ReadLine();
 
