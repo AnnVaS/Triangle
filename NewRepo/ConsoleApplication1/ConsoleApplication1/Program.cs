@@ -10,8 +10,7 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            Edge[] edges = new Edge[3];
-            Point[] points = new Point[3];
+            
 
             double perimeter = 0;
             double area = 0;
@@ -23,6 +22,9 @@ namespace ConsoleApplication1
             Console.Write("Введите количество точек, по которым требуется найти данные фигуры, более 2х ");
             int figure = Convert.ToInt32(Console.ReadLine());
 
+            Edge[] edges = new Edge[figure];
+            Point[] points = new Point[figure];
+
             if (figure == 3)
             {
                 Console.Write("Введите количество треугольников ");
@@ -32,7 +34,7 @@ namespace ConsoleApplication1
 
                 for (int i = 0; i < triangles.Length; i++)
                 {
-                    RandomCoordinatesPoints(points, triangles, i);
+                    RandomCoordinatesPointsForTriangle(points, triangles, i);
                     EdgesLenght(edges, points);
 
                     if (triangles[i].Right(edges) == true)
@@ -61,15 +63,19 @@ namespace ConsoleApplication1
             }
             else
             {
-                Polygon[] polygons = new Polygon[figure];
+                Polygon[] polygons = new Polygon[points.Length];
+                for (int i = 0; i < points.Length; i++)
+                {
+                    RandomCoordinatesPointsForPolygon(points, polygons);
+                    EdgesLenght(edges, points);
+                }
+
+
+                Console.ReadLine();
             }
-               
-
-            Console.ReadLine();
-
         }
         //рандомно генерирует и выводит координаты точек:
-        public static void RandomCoordinatesPoints(Point[] points, Triangle[] triangles, int numberTriangle) //numberTriangle - номер треугольника
+        public static void RandomCoordinatesPointsForTriangle(Point[] points, Triangle[] triangles, int numberTriangle) //numberTriangle - номер треугольника
         {
             Random gen = new Random();
             for (int i = 0; i < 3; i++)
@@ -93,6 +99,17 @@ namespace ConsoleApplication1
                 else edges[i] = new Edge(points[i], points[0]);
                 Console.WriteLine("ребро {0}={1}", i, edges[i].Lenght()); //подписать ребро такое то и тд // .Lenght - находит длину
             }
+        }
+        public static void RandomCoordinatesPointsForPolygon(Point[] points, Polygon[] polygons) //numberTriangle - номер треугольника
+        {
+            Random gen = new Random();
+            for (int i = 0; i < 3; i++)
+            {
+                points[i] = new Point(gen.Next(0, 5), gen.Next(0, 5));
+                points[i].PrintCoordinate();
+
+            }
+            //triangles[numberTriangle] = new Triangle(points);
         }
     }
 }

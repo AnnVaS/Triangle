@@ -8,10 +8,15 @@ namespace ConsoleApplication1
 {
     class Polygon
     {
-        static int figure;
+        //public int figure;
         double perimeter;
         double area;
+        public void Figure(int figure)
+        {
+            this.figure = figure;
+        }
         public Point[] points = new Point[figure];
+
 
         public Polygon(Point[] points) //конструктор
         {
@@ -33,10 +38,36 @@ namespace ConsoleApplication1
         //находит площадь:
         public double Area() //убрала "double perimeter, double area"
         {
+            double one = 0;
+            double two = 0;
+            double time;
             for (int i = 0; i < points.Length; i++)
             {
-
+                if (i < points.Length - 1)
+                {
+                    time = points[i].coordinateX * points[i + 1].coordinateY;
+                    one += time;
+                }
+                else
+                {
+                    time = points[i].coordinateX * points[0].coordinateY;
+                    one += time;
+                }
             }
+            for (int i = 0; i < points.Length; i++)
+            {
+                if (i < points.Length-1)
+                {
+                    time = points[i].coordinateY * points[i + 1].coordinateX;
+                    two += time;
+                }
+                else
+                {
+                    time = points[i].coordinateY * points[0].coordinateX;
+                    two += time;
+                }
+            }
+            return area = (one - two) / 2;
         }
     }
 }
