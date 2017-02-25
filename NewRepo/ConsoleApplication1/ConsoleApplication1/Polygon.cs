@@ -24,7 +24,7 @@ namespace ConsoleApplication1
         }
         public double Perimeter(Edge[] edges) //убрала perimeter
         {
-            for (int i = 0; i < fig; i++)
+            for (int i = 0; i < edges.Length; i++)
             {
                 double edgePolygon = edges[i].Lenght();//вызывается функция из edge  и находится длина
                 perimeter += edgePolygon;
@@ -33,7 +33,7 @@ namespace ConsoleApplication1
             return perimeter;
         }
         //находит площадь:
-        public double Area() //убрала "double perimeter, double area"
+        public double Area(Point[] points) //убрала "double perimeter, double area"
         {
             double one = 0;
             double two = 0;
