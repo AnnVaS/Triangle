@@ -8,22 +8,23 @@ namespace ConsoleApplication1
 {
     class Polygon
     {
-        /*//public static int figure;
+        //public static int figure;
         double perimeter;
         double area;
-        
-        public Point[] points = new Point[figure];
+        static int fig;
+
+        public Point[] points = new Point[fig];
         
         public Polygon(Point[] points) //конструктор
         {
-            for (int i = 0; i < points.Length; i++)
+            for (int i = 0; i < fig; i++)
             {
                 this.points[i] = points[i];
             }
         }
-        public double Perimeter(Edge[] edges) //убрала "perimeter"
+        public double Perimeter(Edge[] edges) //убрала perimeter
         {
-            for (int i = 0; i < edges.Length; i++)
+            for (int i = 0; i < fig; i++)
             {
                 double edgePolygon = edges[i].Lenght();//вызывается функция из edge  и находится длина
                 perimeter += edgePolygon;
@@ -64,6 +65,6 @@ namespace ConsoleApplication1
                 }
             }
             return area = (one - two) / 2;
-        }*/
+        }
     }
 }

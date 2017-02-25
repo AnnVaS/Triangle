@@ -18,47 +18,96 @@ namespace ConsoleApplication1
             int countRight = 0;
             int countIsosceles = 0;
 
-            Edge[] edges = new Edge[3];
-            Point[] points = new Point[3];
+            Console.Write("Введите количество точек в n-угольнике ");
+            int fig = Convert.ToInt32(Console.ReadLine());
 
-
-            Console.Write("Введите количество треугольников ");
-            int countTriangle = Convert.ToInt32(Console.ReadLine());
-
-            Triangle[] triangles = new Triangle[countTriangle];
-
-            for (int i = 0; i < triangles.Length; i++)
+            Edge[] edges = new Edge[fig];
+            Point[] points = new Point[fig];            
+            
+            if (fig == 3)
             {
-                RandomCoordinatesPointsForTriangle(points, triangles, i);
-                EdgesLenght(edges, points);
 
-                if (triangles[i].Right(edges) == true)
+                Console.Write("Введите количество треугольников ");
+                int countTriangle = Convert.ToInt32(Console.ReadLine());
+
+                Triangle[] triangles = new Triangle[countTriangle];
+
+                for (int i = 0; i < triangles.Length; i++)
                 {
-                    Console.WriteLine("Прямоугольный");
-                    countRight++;
-                    perimeter = triangles[i].Perimeter(edges);//убрала perimeter
-                    Console.WriteLine("Периметер " + perimeter);
-                    averagePerimeter += perimeter;
+                    RandomCoordinatesPointsForTriangle(points, triangles, i);
+                    EdgesLenght(edges, points);
+
+                    if (triangles[i].Right(edges) == true)
+                    {
+                        Console.WriteLine("Прямоугольный");
+                        countRight++;
+                        perimeter = triangles[i].Perimeter(edges);//убрала perimeter
+                        Console.WriteLine("Периметер " + perimeter);
+                        averagePerimeter += perimeter;
+                    }
+                    if (triangles[i].Isosceles(edges) == true)
+                    {
+                        Console.WriteLine("Равнобедренный");
+                        countIsosceles++;
+                        perimeter = triangles[i].Perimeter(edges); //убрала perimeter
+                        area = triangles[i].Area(edges); //убрала "double perimeter, double area"
+                        Console.WriteLine("Площадь " + area);
+                        averageArea += area;
+                    }
+                    Console.WriteLine();
                 }
-                if (triangles[i].Isosceles(edges) == true)
-                {
-                    Console.WriteLine("Равнобедренный");
-                    countIsosceles++;
-                    perimeter = triangles[i].Perimeter(edges); //убрала perimeter
-                    area = triangles[i].Area(edges); //убрала "double perimeter, double area"
-                    Console.WriteLine("Площадь " + area);
-                    averageArea += area;
-                }
-                Console.WriteLine();
+                averagePerimeter = averagePerimeter / countRight;
+                averageArea = averageArea / countIsosceles;
+                Console.WriteLine("Количество прямоуголных = {0}, их среднее = {1}", countRight, averagePerimeter);
+                Console.WriteLine("Количество равнобедренных = {0}, их среднее = {1}", countIsosceles, averageArea);
             }
-            averagePerimeter = averagePerimeter / countRight;
-            averageArea = averageArea / countIsosceles;
-            Console.WriteLine("Количество прямоуголных = {0}, их среднее = {1}", countRight, averagePerimeter);
-            Console.WriteLine("Количество равнобедренных = {0}, их среднее = {1}", countIsosceles, averageArea);
+
+            else
+                /*{
+                    Polygon edgesInPolygon = new Polygon(points);
+                    RandomCoordinatesPointsForPolygon(points);
+                    EdgesLenght(edges, points);
+                    for (int i = 0; i < edges.Length; i++)
+                    {
+                        perimeter = edgesInPolygon.Perimeter(edges);//убрала perimeter                    
+                    }
+                    Console.WriteLine("fig {0}, perimeter {1}", fig, perimeter);
+
+                }*/
+                Console.Write("Введите количество n-угольников ");
+                int countTriangle = Convert.ToInt32(Console.ReadLine());
+
+                Triangle[] triangles = new Triangle[countTriangle];
+
+                for (int i = 0; i < triangles.Length; i++)
+                {
+                    RandomCoordinatesPointsForTriangle(points, triangles, i);
+                    EdgesLenght(edges, points);
+
+                    if (triangles[i].Right(edges) == true)
+                    {
+                        Console.WriteLine("Прямоугольный");
+                        countRight++;
+                        perimeter = triangles[i].Perimeter(edges);//убрала perimeter
+                        Console.WriteLine("Периметер " + perimeter);
+                        averagePerimeter += perimeter;
+                    }
+                    if (triangles[i].Isosceles(edges) == true)
+                    {
+                        Console.WriteLine("Равнобедренный");
+                        countIsosceles++;
+                        perimeter = triangles[i].Perimeter(edges); //убрала perimeter
+                        area = triangles[i].Area(edges); //убрала "double perimeter, double area"
+                        Console.WriteLine("Площадь " + area);
+                        averageArea += area;
+                    }
+                    Console.WriteLine();
+                }
+
+                Console.ReadLine();
         }
 
-
-        //рандомно генерирует и выводит координаты точек:
+        //рандомно генерирует и выводит координаты точек треугольника:
         public static void RandomCoordinatesPointsForTriangle(Point[] points, Triangle[] triangles, int numberTriangle) //numberTriangle - номер треугольника
         {
             Random gen = new Random();
@@ -83,6 +132,16 @@ namespace ConsoleApplication1
                 else edges[i] = new Edge(points[i], points[0]);
                 Console.WriteLine("ребро {0}={1}", i, edges[i].Lenght()); //подписать ребро такое то и тд // .Lenght - находит длину
             }
+        }
+        //рандомно генерирует и выводит координаты точек многоугольника:
+        public static void RandomCoordinatesPointsForPolygon(Point[] points) 
+        {
+            Random gen = new Random();
+            for (int i = 0; i < points.Length; i++)
+            {
+                points[i] = new Point(gen.Next(0, 5), gen.Next(0, 5));
+                points[i].PrintCoordinate();
+            }            
         }
 
     }
