@@ -8,7 +8,7 @@ namespace ConsoleApplication1
 {
     class Point
     {
-        public double coordinateX;//тип поменять не обязательно
+        public double coordinateX;
         public double coordinateY;
 
         public Point(double coordinateX, double coordinateY)
