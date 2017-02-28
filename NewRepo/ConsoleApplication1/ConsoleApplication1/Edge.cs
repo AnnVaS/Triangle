@@ -17,9 +17,12 @@ namespace ConsoleApplication1
             this.pointB = pointB;
 
         }
-        public double Lenght()
+        public double Lenght
         {
-            return Math.Sqrt(Math.Pow(pointB.coordinateX - pointA.coordinateX, 2) + Math.Pow(pointB.coordinateY - pointA.coordinateY, 2));
+            get
+            {
+                return Math.Sqrt(Math.Pow(pointB.coordinateX - pointA.coordinateX, 2) + Math.Pow(pointB.coordinateY - pointA.coordinateY, 2));
+            }
         }
 
 

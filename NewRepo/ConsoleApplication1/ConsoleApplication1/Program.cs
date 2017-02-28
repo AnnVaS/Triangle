@@ -20,15 +20,11 @@ namespace ConsoleApplication1
             int countRight = 0;
             int countIsosceles = 0;
 
-            Console.Write("Введите количество точек в n-угольнике ");
-            int fig = Convert.ToInt32(Console.ReadLine());
-
-            Edge[] edges = new Edge[fig];
-            Point[] points = new Point[fig];            
             
-            if (fig == 3)
-            {
-
+            Edge[] edges = new Edge[3];
+            Point[] points = new Point[3];            
+            
+            
                 Console.Write("Введите количество треугольников ");
                 int countTriangle = Convert.ToInt32(Console.ReadLine());
 
@@ -62,26 +58,9 @@ namespace ConsoleApplication1
                 averageArea = averageArea / countIsosceles;
                 Console.WriteLine("Количество прямоуголных = {0}, их среднее = {1}", countRight, averagePerimeter);
                 Console.WriteLine("Количество равнобедренных = {0}, их среднее = {1}", countIsosceles, averageArea);
-            }
+            
 
-            else
-                Console.Write("Введите количество n-угольников ");
-                int countPolygon = Convert.ToInt32(Console.ReadLine());
-
-                Polygon[] polygons = new Polygon[countPolygon];
-
-                for (int i = 0; i < polygons.Length; i++)
-                {
-                    RandomCoordinatesPointsForPolygon(points, polygons, i);
-                    EdgesLenght(edges, points);
-
-                    perimeter = polygons[i].Perimeter(edges);
-                    Console.WriteLine("Периметер " + perimeter);
-                    area = polygons[i].Area(points);
-                    Console.WriteLine("Площадь " + area);
-
-                
-                }
+            
                 Console.WriteLine();
                 Console.ReadLine();
         }
@@ -109,22 +88,9 @@ namespace ConsoleApplication1
 
                 }
                 else edges[i] = new Edge(points[i], points[0]);
-                Console.WriteLine("ребро {0}={1}", i, edges[i].Lenght()); //подписать ребро такое то и тд // .Lenght - находит длину
+                Console.WriteLine("ребро {0}={1}", i, edges[i].Lenght); //подписать ребро такое то и тд // .Lenght - находит длину
             }
         }
-        //рандомно генерирует и выводит координаты точек многоугольника:
-       
-        public static void RandomCoordinatesPointsForPolygon(Point[] points, Polygon[] polygons, int numberPolygon) //numberPolygon - номер n-угольника
-        {
-            Random gen = new Random();
-            for (int i = 0; i < points.Length; i++)
-            {
-                points[i] = new Point(gen.Next(0, 10), gen.Next(0, 10));
-                points[i].PrintCoordinate();
-
-            }
-            polygons[numberPolygon] = new Polygon(points);
-        }
-
+        
     }
 }

@@ -14,18 +14,15 @@ namespace ConsoleApplication1
                 
         public Triangle(Point[] points) //конструктор
         {
-            //this.points = new Point[points.Length];
-            for (int i = 0; i < points.Length; i++)
-            {
-                this.points[i] = points[i];
-            }
+            this.points = new Point[points.Length];
+            
         }
         //находит периметр:
         public double Perimeter(Edge[] edges) 
         {
             for (int i = 0; i < edges.Length; i++)
             {
-                double edgeTriangle = edges[i].Lenght();//вызывается функция из edge  и находится длина
+                double edgeTriangle = edges[i].Lenght;//вызывается функция из edge  и находится длина
                 perimeter += edgeTriangle;
                 
             }
@@ -40,7 +37,7 @@ namespace ConsoleApplication1
             double proiztimes=1;          //произведение временных переменных
             for (int i = 0; i < edges.Length; i++)
             {
-                time = polPerimeter - edges[i].Lenght(); // часть функции, а именно (p-a)*(p-b)*(p-c)
+                time = polPerimeter - edges[i].Lenght; // часть функции, а именно (p-a)*(p-b)*(p-c)
                 proiztimes *= time;
 
             }
@@ -49,42 +46,29 @@ namespace ConsoleApplication1
         }
         public bool Right(Edge[] edges) //проверяет, является ли треугольник правильным
         {
-            /*if (edges[0].Lenght() == Math.Sqrt(Math.Pow(edges[1].Lenght(), 2) + Math.Pow(edges[2].Lenght(), 2)))
-            {
-                return true;
-            }
-            if (edges[1].Lenght() == Math.Sqrt(Math.Pow(edges[2].Lenght(), 2) + Math.Pow(edges[0].Lenght(), 2)))
-            {
-                return true;
-            }
-            if (edges[2].Lenght() == Math.Sqrt(Math.Pow(edges[0].Lenght(), 2) + Math.Pow(edges[1].Lenght(), 2)))
-            {
-                return true;
-            }
-            else return false;*///версия 1.0
             int i = 0;
                                                 
-            if (edges[i].Lenght() > edges[i+1].Lenght())
+            if (edges[i].Lenght > edges[i+1].Lenght)
             {
-                if (edges[i].Lenght() > edges[i + 2].Lenght())
+                if (edges[i].Lenght > edges[i + 2].Lenght)
                 {
-                    if (Math.Pow(edges[i].Lenght(), 2)==(Math.Pow(edges[i+1].Lenght(), 2)+(Math.Pow(edges[i+2].Lenght(), 2))))
+                    if (Math.Pow(edges[i].Lenght, 2)==(Math.Pow(edges[i+1].Lenght, 2)+(Math.Pow(edges[i+2].Lenght, 2))))
                     {
                         return true;
                     }
                 }
-                else if (Math.Pow(edges[i + 2].Lenght(),2)==(Math.Pow(edges[i + 1].Lenght(), 2) + (Math.Pow(edges[i + 2].Lenght(), 2))))
+                else if (Math.Pow(edges[i + 2].Lenght,2)==(Math.Pow(edges[i + 1].Lenght, 2) + (Math.Pow(edges[i + 2].Lenght, 2))))
                 {
                     return true;
                 }
             }
-            else if (edges[i+1].Lenght() > edges[i + 2].Lenght())
+            else if (edges[i+1].Lenght > edges[i + 2].Lenght)
             {
-                if (Math.Pow(edges[i+1].Lenght(), 2) == (Math.Pow(edges[i].Lenght(), 2) + (Math.Pow(edges[i + 2].Lenght(), 2))))
+                if (Math.Pow(edges[i+1].Lenght, 2) == (Math.Pow(edges[i].Lenght, 2) + (Math.Pow(edges[i + 2].Lenght, 2))))
                 {
                     return true;
                 }
-                else if (Math.Pow(edges[i+2].Lenght(), 2) == (Math.Pow(edges[i + 1].Lenght(), 2) + (Math.Pow(edges[i].Lenght(), 2))))
+                else if (Math.Pow(edges[i+2].Lenght, 2) == (Math.Pow(edges[i + 1].Lenght, 2) + (Math.Pow(edges[i].Lenght, 2))))
                 {
                     return true;
                 }
