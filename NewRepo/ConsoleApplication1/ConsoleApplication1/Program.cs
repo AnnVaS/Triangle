@@ -35,20 +35,20 @@ namespace ConsoleApplication1
                     RandomCoordinatesPointsForTriangle(points, triangles, i);
                     EdgesLenght(edges, points);
 
-                    if (triangles[i].Right(edges) == true)
+                    if (triangles[i].Right() == true)
                     {
                         Console.WriteLine("Прямоугольный");
                         countRight++;
-                        perimeter = triangles[i].Perimeter(edges);
+                        perimeter = triangles[i].Perimeter();
                         Console.WriteLine("Периметер " + perimeter);
                         averagePerimeter += perimeter;
                     }
-                    if (triangles[i].Isosceles(edges) == true)
+                    if (triangles[i].Isosceles() == true)
                     {
                         Console.WriteLine("Равнобедренный");
                         countIsosceles++;
-                        perimeter = triangles[i].Perimeter(edges); 
-                        area = triangles[i].Area(edges); 
+                        perimeter = triangles[i].Perimeter(); 
+                        area = triangles[i].Area(); 
                         Console.WriteLine("Площадь " + area);
                         averageArea += area;
                     }

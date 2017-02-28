@@ -16,7 +16,7 @@ namespace ConsoleApplication1
 
         public Triangle(Point[] points) //конструктор
         {
-            this.points = new Point[points.Length];
+            this.points = points;
             
         }
         //находит периметр:
