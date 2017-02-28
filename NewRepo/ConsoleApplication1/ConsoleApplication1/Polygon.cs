@@ -22,7 +22,7 @@ namespace ConsoleApplication1
                 this.points[i] = points[i];
             }
         }
-        public double Perimeter(Edge[] edges) //убрала perimeter
+        public double Perimeter(Edge[] edges) 
         {
             for (int i = 0; i < edges.Length; i++)
             {
@@ -33,7 +33,7 @@ namespace ConsoleApplication1
             return perimeter;
         }
         //находит площадь:
-        public double Area(Point[] points) //убрала "double perimeter, double area"
+        public double Area(Point[] points) 
         {
             double one = 0;
             double two = 0;
