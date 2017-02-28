@@ -11,14 +11,16 @@ namespace ConsoleApplication1
         double perimeter;
         double area;
         public Point[] points = new Point[3];
-                
+        public Edge[] edges = new Edge[3];
+
+
         public Triangle(Point[] points) //конструктор
         {
             this.points = new Point[points.Length];
             
         }
         //находит периметр:
-        public double Perimeter(Edge[] edges) 
+        public double Perimeter() 
         {
             for (int i = 0; i < edges.Length; i++)
             {
@@ -29,7 +31,7 @@ namespace ConsoleApplication1
             return perimeter;
         }
         //находит площадь:
-        public double Area(Edge[] edges) 
+        public double Area() 
         {
             
             double polPerimeter = perimeter / 2;
@@ -44,7 +46,7 @@ namespace ConsoleApplication1
             area = Math.Sqrt(proiztimes * polPerimeter);
             return area;
         }
-        public bool Right(Edge[] edges) //проверяет, является ли треугольник правильным
+        public bool Right() //проверяет, является ли треугольник правильным
         {
             int i = 0;
                                                 
@@ -75,7 +77,7 @@ namespace ConsoleApplication1
             }
             return false;
         } 
-        public bool Isosceles(Edge[] edges) //проверяет, является ои треугольник равнобедренным
+        public bool Isosceles() //проверяет, является ои треугольник равнобедренным
         {
             if (edges[0] == edges[1] || edges[1] == edges[2] || edges[2] == edges[0])
             {
