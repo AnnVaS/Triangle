@@ -21,7 +21,7 @@ namespace ConsoleApplication1
             }
         }
         //находит периметр:
-        public double Perimeter(Edge[] edges) //убрала perimeter
+        public double Perimeter(Edge[] edges) 
         {
             for (int i = 0; i < edges.Length; i++)
             {
@@ -32,9 +32,9 @@ namespace ConsoleApplication1
             return perimeter;
         }
         //находит площадь:
-        public double Area(Edge[] edges) //убрала "double perimeter, double area"
+        public double Area(Edge[] edges) 
         {
-            //area = корень(p*(p-a)*(p-b)*(p-c))
+            
             double polPerimeter = perimeter / 2;
             double time;                //разность полупериметра и стороны
             double proiztimes=1;          //произведение временных переменных
@@ -47,7 +47,7 @@ namespace ConsoleApplication1
             area = Math.Sqrt(proiztimes * polPerimeter);
             return area;
         }
-        public bool Right(Edge[] edges)
+        public bool Right(Edge[] edges) //проверяет, является ли треугольник правильным
         {
             /*if (edges[0].Lenght() == Math.Sqrt(Math.Pow(edges[1].Lenght(), 2) + Math.Pow(edges[2].Lenght(), 2)))
             {
@@ -90,7 +90,7 @@ namespace ConsoleApplication1
                 }
             }
             return false;
-        } //проверяет, является ли треугольник правильным
+        } 
         public bool Isosceles(Edge[] edges) //проверяет, является ои треугольник равнобедренным
         {
             if (edges[0] == edges[1] || edges[1] == edges[2] || edges[2] == edges[0])
