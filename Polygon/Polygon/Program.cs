@@ -4,12 +4,95 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Polygon
+namespace ConsoleApplication1
 {
     class Program
     {
         static void Main(string[] args)
+
         {
+            double perimeter;
+            double area;
+
+            double averagePerimeter = 0;
+            double averageArea = 0;
+
+            int countRight = 0;
+            int countIsosceles = 0;
+
+            Console.Write("Введите количество точек в n-угольнике ");
+            int fig = Convert.ToInt32(Console.ReadLine());
+
+            Edge[] edges = new Edge[fig];
+            Point[] points = new Point[fig];
+
+
+                Console.Write("Введите количество треугольников ");
+                int countTriangle = Convert.ToInt32(Console.ReadLine());
+
+                Triangle[] triangles = new Triangle[countTriangle];
+
+                for (int i = 0; i < triangles.Length; i++)
+                {
+                    RandomCoordinatesPointsForTriangle(points, triangles, i);
+                    EdgesLenght(edges, points);
+
+                    if (triangles[i].Right(edges) == true)
+                    {
+                        Console.WriteLine("Прямоугольный");
+                        countRight++;
+                        perimeter = triangles[i].Perimeter(edges);
+                        Console.WriteLine("Периметер " + perimeter);
+                        averagePerimeter += perimeter;
+                    }
+                    if (triangles[i].Isosceles(edges) == true)
+                    {
+                        Console.WriteLine("Равнобедренный");
+                        countIsosceles++;
+                        perimeter = triangles[i].Perimeter(edges);
+                        area = triangles[i].Area(edges);
+                        Console.WriteLine("Площадь " + area);
+                        averageArea += area;
+                    }
+                    Console.WriteLine();
+                }
+                averagePerimeter = averagePerimeter / countRight;
+                averageArea = averageArea / countIsosceles;
+                Console.WriteLine("Количество прямоуголных = {0}, их среднее = {1}", countRight, averagePerimeter);
+                Console.WriteLine("Количество равнобедренных = {0}, их среднее = {1}", countIsosceles, averageArea);
+            
+
+           
+            Console.WriteLine();
+            Console.ReadLine();
         }
+
+        //рандомно генерирует и выводит координаты точек треугольника:
+        public static void RandomCoordinatesPointsForTriangle(Point[] points, Triangle[] triangles, int numberTriangle) //numberTriangle - номер треугольника
+        {
+            Random gen = new Random();
+            for (int i = 0; i < 3; i++)
+            {
+                points[i] = new Point(gen.Next(0, 5), gen.Next(0, 5));
+                points[i].PrintCoordinate();
+
+            }
+            triangles[numberTriangle] = new Triangle(points);
+        }
+        //заполняет массив сторон их длинами:
+        public static void EdgesLenght(Edge[] edges, Point[] points)
+        {
+            for (int i = 0; i < edges.Length; i++)
+            {
+                if (i < edges.Length - 1)
+                {
+                    edges[i] = new Edge(points[i], points[i + 1]);
+
+                }
+                else edges[i] = new Edge(points[i], points[0]);
+                Console.WriteLine("ребро {0}={1}", i, edges[i].Lenght()); //подписать ребро такое то и тд // .Lenght - находит длину
+            }
+        }
+        
     }
 }
