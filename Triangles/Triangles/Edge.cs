@@ -8,12 +8,12 @@ namespace ConsoleApplication1
 {
     class Edge
     {
-        public Point pointA; 
+        public Point pointA;
         public Point pointB;
-        
+
         public Edge(Point pointA, Point pointB)
         {
-            this.pointA = pointA; 
+            this.pointA = pointA;
             this.pointB = pointB;
 
         }

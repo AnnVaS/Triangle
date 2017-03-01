@@ -15,7 +15,7 @@ namespace ConsoleApplication1
             double averageArea = 0;
 
             int countRight = 0;
-            int countIsosceles = 0;            
+            int countIsosceles = 0;
 
             Edge[] edges = new Edge[3];
             Point[] points = new Point[3];
@@ -31,19 +31,19 @@ namespace ConsoleApplication1
                 if (triangles[i].Right() == true)
                 {
                     Console.WriteLine("Прямоугольный");
-                    countRight++;                    
+                    countRight++;
                     Console.WriteLine("Периметер " + triangles[i].Perimeter);
                     averagePerimeter += triangles[i].Perimeter;
                 }
                 if (triangles[i].Isosceles() == true)
                 {
                     Console.WriteLine("Равнобедренный");
-                    countIsosceles++;                                        
+                    countIsosceles++;
                     Console.WriteLine("Площадь " + triangles[i].Area);
                     averageArea += triangles[i].Area;
                 }
                 Console.WriteLine();
-            }            
+            }
             Console.WriteLine("Количество прямоуголных = {0}, их среднее = {1}", countRight, averagePerimeter / countRight);
             Console.WriteLine("Количество равнобедренных = {0}, их среднее = {1}", countIsosceles, averageArea / countIsosceles);
 
@@ -78,6 +78,5 @@ namespace ConsoleApplication1
                 Console.WriteLine("ребро {0}={1}", i, edges[i].Lenght); //подписать ребро такое то и тд // .Lenght - находит длину
             }
         }
-
     }
 }

@@ -14,16 +14,16 @@ namespace ConsoleApplication1
         public Triangle(Point[] points, Edge[] edges) //конструктор
         {
             this.points = points;
-            this.edges = edges;            
+            this.edges = edges;
         }
         //находит периметр:
         public double Perimeter
         {
             get
             {
-                double perimeter=0;
+                double perimeter = 0;
                 for (int i = 0; i < edges.Length; i++)
-                {                    
+                {
                     perimeter += edges[i].Lenght;
                 }
                 return perimeter;
@@ -43,9 +43,9 @@ namespace ConsoleApplication1
             }
         }
         //проверяет, является ли треугольник правильным:
-        public bool Right() 
+        public bool Right()
         {
-            
+
             int i = 0;
 
             if (edges[i].Lenght > edges[i + 1].Lenght)
@@ -76,7 +76,7 @@ namespace ConsoleApplication1
             return false;
         }
         //проверяет, является ои треугольник равнобедренным:
-        public bool Isosceles() 
+        public bool Isosceles()
         {
             if (edges[0] == edges[1] || edges[1] == edges[2] || edges[2] == edges[0])
             {
@@ -85,7 +85,7 @@ namespace ConsoleApplication1
             else return false;
         }
         //проверяет, не совпадают ли точки в треугольнике:
-        public bool VerificationPoints() 
+        public bool VerificationPoints()
         {
             for (int i = 0; i < points.Length; i++)
             {
