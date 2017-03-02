@@ -15,10 +15,6 @@ namespace ConsoleApplication1
         {
             this.coordinateX = coordinateX;
             this.coordinateY = coordinateY;
-        }
-        public void PrintCoordinate()
-        {
-            Console.WriteLine("Координата Х = {0}, координата Y = {1}", coordinateX, coordinateY); //удалить потом в финальной версии
-        }
+        }        
     }
 }
