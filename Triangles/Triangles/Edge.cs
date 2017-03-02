@@ -17,7 +17,7 @@ namespace ConsoleApplication1
             this.pointB = pointB;
 
         }
-        public double Lenght
+        public double SearchLenght
         {
             get
             {

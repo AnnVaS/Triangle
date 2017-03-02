@@ -24,7 +24,7 @@ namespace ConsoleApplication1
                 double perimeter = 0;
                 for (int i = 0; i < edges.Length; i++)
                 {
-                    perimeter += edges[i].Lenght;
+                    perimeter += edges[i].SearchLenght;
                 }
                 return perimeter;
             }
@@ -37,7 +37,7 @@ namespace ConsoleApplication1
                 double area = 1;          //произведение временных переменных
                 for (int i = 0; i < edges.Length; i++)
                 {
-                    area *= (Perimeter / 2 - edges[i].Lenght);
+                    area *= (Perimeter / 2 - edges[i].SearchLenght);
                 }
                 return Math.Sqrt(area * Perimeter / 2);
             }
@@ -45,30 +45,29 @@ namespace ConsoleApplication1
         //проверяет, является ли треугольник правильным:
         public bool Right()
         {
-
             int i = 0;
 
-            if (edges[i].Lenght > edges[i + 1].Lenght)
+            if (edges[i].SearchLenght > edges[i + 1].SearchLenght)
             {
-                if (edges[i].Lenght > edges[i + 2].Lenght)
+                if (edges[i].SearchLenght > edges[i + 2].SearchLenght)
                 {
-                    if (Math.Pow(edges[i].Lenght, 2) == (Math.Pow(edges[i + 1].Lenght, 2) + (Math.Pow(edges[i + 2].Lenght, 2))))
+                    if (Math.Pow(edges[i].SearchLenght, 2) == (Math.Pow(edges[i + 1].SearchLenght, 2) + (Math.Pow(edges[i + 2].SearchLenght, 2))))
                     {
                         return true;
                     }
                 }
-                else if (Math.Pow(edges[i + 2].Lenght, 2) == (Math.Pow(edges[i + 1].Lenght, 2) + (Math.Pow(edges[i + 2].Lenght, 2))))
+                else if (Math.Pow(edges[i + 2].SearchLenght, 2) == (Math.Pow(edges[i + 1].SearchLenght, 2) + (Math.Pow(edges[i + 2].SearchLenght, 2))))
                 {
                     return true;
                 }
             }
-            else if (edges[i + 1].Lenght > edges[i + 2].Lenght)
+            else if (edges[i + 1].SearchLenght > edges[i + 2].SearchLenght)
             {
-                if (Math.Pow(edges[i + 1].Lenght, 2) == (Math.Pow(edges[i].Lenght, 2) + (Math.Pow(edges[i + 2].Lenght, 2))))
+                if (Math.Pow(edges[i + 1].SearchLenght, 2) == (Math.Pow(edges[i].SearchLenght, 2) + (Math.Pow(edges[i + 2].SearchLenght, 2))))
                 {
                     return true;
                 }
-                else if (Math.Pow(edges[i + 2].Lenght, 2) == (Math.Pow(edges[i + 1].Lenght, 2) + (Math.Pow(edges[i].Lenght, 2))))
+                else if (Math.Pow(edges[i + 2].SearchLenght, 2) == (Math.Pow(edges[i + 1].SearchLenght, 2) + (Math.Pow(edges[i].SearchLenght, 2))))
                 {
                     return true;
                 }
@@ -107,7 +106,7 @@ namespace ConsoleApplication1
             return false;
         }
         //проверяет, лежат ли точки на одной прямой или нет:
-        public bool Points()
+        public bool VerificationPointsOnTheLine()
         {
             if ((points[2].coordinateX - points[0].coordinateX) / (points[1].coordinateX - points[0].coordinateX) ==
                 (points[2].coordinateY - points[0].coordinateY) / (points[1].coordinateY - points[0].coordinateY))

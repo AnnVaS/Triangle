@@ -11,11 +11,11 @@ namespace ConsoleApplication1
         static void Main(string[] args)
 
         {
-            double averagePerimeter = 0;
-            double averageArea = 0;
+            double averagePerimeterRightTringles = 0;
+            double averageAreaIsoscelesTriangles = 0;
 
-            int countRight = 0;
-            int countIsosceles = 0;
+            int countRightTriangles = 0;
+            int countIsoscelesTriangles = 0;
 
             Edge[] edges = new Edge[3];
             Point[] points = new Point[3];
@@ -26,46 +26,47 @@ namespace ConsoleApplication1
             for (int i = 0; i < triangles.Length; i++)
             {
                 RandomCoordinatesPointsForTriangle(points, triangles, i, edges);
-                EdgesLenght(edges, points);
+                Console.WriteLine("Треугольник {0}: ", i+1);
+                LenghtsOfEdges(edges, points);
 
                 if (triangles[i].Right() == true)
                 {
                     Console.WriteLine("Прямоугольный");
-                    countRight++;
+                    countRightTriangles++;
                     Console.WriteLine("Периметер " + triangles[i].Perimeter);
-                    averagePerimeter += triangles[i].Perimeter;
+                    averagePerimeterRightTringles += triangles[i].Perimeter;
                 }
                 if (triangles[i].Isosceles() == true)
                 {
                     Console.WriteLine("Равнобедренный");
-                    countIsosceles++;
+                    countIsoscelesTriangles++;
                     Console.WriteLine("Площадь " + triangles[i].Area);
-                    averageArea += triangles[i].Area;
+                    averageAreaIsoscelesTriangles += triangles[i].Area;
                 }
-                Console.WriteLine();
+                else
+                {
+                    Console.WriteLine("Обычный треугольник\nПериметер = {0}\nПлощадь = {1}\n", triangles[i].Perimeter, triangles[i].Area);
+                }
             }
-            Console.WriteLine("Количество прямоуголных = {0}, их среднее = {1}", countRight, averagePerimeter / countRight);
-            Console.WriteLine("Количество равнобедренных = {0}, их среднее = {1}", countIsosceles, averageArea / countIsosceles);
-
+            Console.WriteLine("Количество прямоуголных = {0}, их среднее = {1}", countRightTriangles, averagePerimeterRightTringles / countRightTriangles);
+            Console.WriteLine("Количество равнобедренных = {0}, их среднее = {1}", countIsoscelesTriangles, averageAreaIsoscelesTriangles / countIsoscelesTriangles);
 
             Console.WriteLine();
             Console.ReadLine();
         }
 
         //рандомно генерирует и выводит координаты точек треугольника:
-        public static void RandomCoordinatesPointsForTriangle(Point[] points, Triangle[] triangles, int numberTriangle, Edge[] edges) //numberTriangle - номер треугольника
+        public static void RandomCoordinatesPointsForTriangle(Point[] points, Triangle[] triangles, int numberTriangle, Edge[] edges) 
         {
             Random gen = new Random();
             for (int i = 0; i < 3; i++)
             {
-                points[i] = new Point(gen.Next(0, 5), gen.Next(0, 5));
-                points[i].PrintCoordinate();
-
+                points[i] = new Point(gen.Next(0, 5), gen.Next(0, 5));                
             }
             triangles[numberTriangle] = new Triangle(points, edges);
         }
         //заполняет массив сторон их длинами:
-        public static void EdgesLenght(Edge[] edges, Point[] points)
+        public static void LenghtsOfEdges(Edge[] edges, Point[] points)
         {
             for (int i = 0; i < edges.Length; i++)
             {
@@ -75,7 +76,7 @@ namespace ConsoleApplication1
 
                 }
                 else edges[i] = new Edge(points[i], points[0]);
-                Console.WriteLine("ребро {0}={1}", i, edges[i].Lenght); //подписать ребро такое то и тд // .Lenght - находит длину
+                Console.WriteLine("ребро {0}={1}", i, edges[i].SearchLenght); 
             }
         }
     }
