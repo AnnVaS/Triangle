@@ -8,8 +8,8 @@ namespace ConsoleApplication1
 {
     class Triangle
     {
-        public Point[] points = new Point[3];
-        public Edge[] edges = new Edge[3];
+        private Point[] points = new Point[3];
+        private Edge[] edges = new Edge[3];
 
         public Triangle(Point[] points, Edge[] edges) //конструктор
         {
