@@ -77,7 +77,7 @@ namespace ConsoleApplication1
         //проверяет, является ои треугольник равнобедренным:
         public bool Isosceles()
         {
-            if (edges[0] == edges[1] || edges[1] == edges[2] || edges[2] == edges[0])
+            if (edges[0].SearchLenght == edges[1].SearchLenght || edges[1].SearchLenght == edges[2].SearchLenght || edges[2].SearchLenght == edges[0].SearchLenght)
             {
                 return true;
             }
