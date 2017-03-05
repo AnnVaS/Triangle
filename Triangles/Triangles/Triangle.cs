@@ -8,8 +8,8 @@ namespace ConsoleApplication1
 {
     class Triangle
     {
-        public Point[] points = new Point[3];
-        public Edge[] edges = new Edge[3];
+        private Point[] points = new Point[3];
+        private Edge[] edges = new Edge[3];
 
         public Triangle(Point[] points, Edge[] edges) //конструктор
         {
@@ -77,7 +77,7 @@ namespace ConsoleApplication1
         //проверяет, является ои треугольник равнобедренным:
         public bool Isosceles()
         {
-            if (edges[0] == edges[1] || edges[1] == edges[2] || edges[2] == edges[0])
+            if (edges[0].SearchLenght == edges[1].SearchLenght || edges[1].SearchLenght == edges[2].SearchLenght || edges[2].SearchLenght == edges[0].SearchLenght)
             {
                 return true;
             }

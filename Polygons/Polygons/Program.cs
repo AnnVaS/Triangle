@@ -49,10 +49,14 @@ namespace ConsoleApplication1
         public static void RandomCoordinatesPointsForPolygon(Point[] points, Polygon[] polygons, int numberPolygon, Edge[] edges) 
         {
             Random gen = new Random();
-            for (int i = 0; i < points.Length; i++)
+            do
             {
-                points[i] = new Point(gen.Next(0, 10), gen.Next(0, 10));                
-            }
+                for (int i = 0; i < points.Length; i++)
+                {
+                    points[i] = new Point(gen.Next(0, 10), gen.Next(0, 10));                
+                }
+                polygons[numberPolygon] = new Polygon(points, edges);
+            } while (polygons[numberPolygon].VerificationPoints() == true);
             polygons[numberPolygon] = new Polygon(points, edges);
         }
 

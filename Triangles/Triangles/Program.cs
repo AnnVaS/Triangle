@@ -58,11 +58,16 @@ namespace ConsoleApplication1
         //рандомно генерирует и выводит координаты точек треугольника:
         public static void RandomCoordinatesPointsForTriangle(Point[] points, Triangle[] triangles, int numberTriangle, Edge[] edges) 
         {
-            Random gen = new Random();
-            for (int i = 0; i < 3; i++)
-            {
-                points[i] = new Point(gen.Next(0, 5), gen.Next(0, 5));                
-            }
+            Random gen = new Random();            
+                do
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                    points[i] = new Point(gen.Next(0, 5), gen.Next(0, 5));
+                    }
+                    triangles[numberTriangle] = new Triangle(points, edges);
+                } while (triangles[numberTriangle].VerificationPoints() == true || triangles[numberTriangle].VerificationPointsOnTheLine() == true);                   
+                       
             triangles[numberTriangle] = new Triangle(points, edges);
         }
         //заполняет массив сторон их длинами:

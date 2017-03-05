@@ -8,8 +8,8 @@ namespace ConsoleApplication1
 {
     class Edge
     {
-        public Point pointA;
-        public Point pointB;
+        private Point pointA;
+        private Point pointB;
 
         public Edge(Point pointA, Point pointB)
         {
